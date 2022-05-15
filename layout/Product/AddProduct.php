@@ -67,7 +67,7 @@ if (!function_exists('create_slug')) {
             //move_uploaded_file($hinhanh_tmp,'uploads/' .$hinhanh);
             move_uploaded_file($source_img, $path_img);
             $qr = mysqli_query($conn, $sql);
-            
+            fjajfjj
         }
         $sql_category = "select * from categories";
         $query_category = mysqli_query($conn, $sql_category);
