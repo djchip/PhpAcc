@@ -4,7 +4,7 @@
         foreach($_FILES['img_file']['name'] as $name => $value){
             $name_img = stripslashes($_FILES['img_file']['name'][$name]);
             $source_img = $_FILES['img_file']['tmp_name'][$name];
-            $path_img = "uploads/" . $name_img;
+            $path_img = "../../img/" . $name_img;
             if(isset($_POST['save'])){
                 $sql = "INSERT INTO product_images (image_url, product_id) VALUES ('$name_img',$productId)";
                 move_uploaded_file($source_img, $path_img);

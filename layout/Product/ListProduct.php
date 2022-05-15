@@ -46,7 +46,7 @@
                                 <td>".$i."</td>
                                 <td>".$row[1]."</td>
                                 <td>
-                                    <img width=90px src='uploads/".$row[5]."'>
+                                    <img width=90px src='../../img/".$row[5]."'>
                                 </td>
                                 <td>".$row[6]."</td>
                                 <td>".$row[8]."</td>
@@ -55,6 +55,7 @@
                                 <td> <button><a href='./EditProduct.php?id=".$row[0]."'>Sửa</a></button><button '><a href='./DeleteProduct.php?id=".$row[0] ."'onclick='return XacNhanXoa()'>Xóa</a></button></td>
                                 </tr>
                             ";
+                            var_dump($row[5]);
                             }
                         ?>
                     </tbody>

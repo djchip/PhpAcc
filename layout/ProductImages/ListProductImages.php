@@ -30,18 +30,20 @@
                     <tbody>
                         <?php
                             include "../connectSQL.php";
-                            $sql = "select * from product_images inner join products on product_images.product_id = products.id order by product_images.id desc ";
+                            $sql = "select product_images.id, products.name, product_images.image_url from product_images inner join products on product_images.product_id = products.id group by products.name order by product_images.id desc ";
+                            $sql2 = "select product_images.id, products.name, product_images.image_url from product_images inner join products on product_images.product_id = products.id order by product_images.id desc ";
                             $query = $conn->query($sql);
+                            $query2 = $conn->query($sql2);
                             $i = 0;
                             while($row = $query->fetch_row()) {
                                 $i++;
                                 echo "
                                 <tr>
                                 <td>".$i."</td>
-                                <td>".$row[4]."</td>
-                                <td>
-                                    <img width=90px src='uploads/".$row[1]."'>
-                                </td>
+                                <td>".$row[1]."</td> 
+                                <td> 
+                                    <img width=90px src='../../img/".$row[2]."'>
+                                </td> 
                                 <td> <button><a href='./EditProduct.php?id=".$row[0]."'>Sửa</a></button><button '><a href='./DeleteProduct.php?id=".$row[0] ."'onclick='return XacNhanXoa()'>Xóa</a></button></td>
                                 </tr>
                             ";

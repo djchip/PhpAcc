@@ -62,7 +62,7 @@ if (!function_exists('create_slug')) {
         //hinh anh
         $name_img = stripslashes($_FILES['productImage']['name']);
         $source_img = $_FILES['productImage']['tmp_name'];
-        $path_img = "uploads/" . $name_img;
+        $path_img = "../../img/" . $name_img;
 
         $productActive = $_POST['productActive'];
         $productHot = $_POST['productHot'];

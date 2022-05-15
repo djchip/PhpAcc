@@ -55,7 +55,7 @@ if (!function_exists('create_slug')) {
 
         $name_img = stripslashes($_FILES['productImage']['name']);
         $source_img = $_FILES['productImage']['tmp_name'];
-        $path_img = "uploads/" . $name_img;
+        $path_img = "../../img/" . $name_img;
 
         $productActive = $_POST['productActive'];
         $productHot = $_POST['productHot'];
@@ -67,7 +67,6 @@ if (!function_exists('create_slug')) {
             //move_uploaded_file($hinhanh_tmp,'uploads/' .$hinhanh);
             move_uploaded_file($source_img, $path_img);
             $qr = mysqli_query($conn, $sql);
-            fjajfjj
         }
         $sql_category = "select * from categories";
         $query_category = mysqli_query($conn, $sql_category);
