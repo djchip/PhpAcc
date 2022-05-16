@@ -1,3 +1,14 @@
+<?php 
+    include "../connectSQL.php";
+    if(isset($_GET['id'])){
+        $id = $_GET['id'];
+    }
+    $sql_up = "select * from product_images join products on product_images.product_id = products.id where product_images.product_id = $id";
+    var_dump($id);
+    $query_up = $conn->query($sql_up);
+    //var_dump($query);
+    $row_up = mysqli_fetch_assoc($query_up);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +22,15 @@
     <link rel="stylesheet" href="../../css/Dasboard.css">
     <link rel="stylesheet" href="../../css/ListCategories.css">
     <style>
-        
+        .blue{
+            background-color: #ff6f0c;
+            border-style: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .blue a{
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -19,52 +38,34 @@
     <main>
         <?php include '../common/left.php'?>
         <div class="right">
-            <h1>List Products</h1>
-            <h2><a href="#">Dasboard</a>/List Products</h2>
+            <h1>Details Product Images</h1>
+
+            <h2><a href="#">Dasboard</a>/Details Product Images</h2>
+            <div><button class="blue"><a href='./AddproductImages.php'>Thêm ảnh</a></button></div>
+            <br>
             <div class="bang">
-                <p><i class="fas fa-clipboard-list"></i> All Listings</p>
                 <table class="table table-bordered" >
+                <h3>Product Images: <?php echo $row_up['name'] ?></h3>
                     <thead>
-                        <th width=50px>STT</th>
-                        <th width=200px>Product's Name</th>
-                        <th>Image</th>
-                        <th width=65px>Active</th>
-                        <th width=50px>Hot</th>
-                        <th width=90px>Quantity</th>
-                        <th width=200px>Category Name</th>
-                        <th>Action</th>
+                        <th width = 100px>STT</th>
+                        <th>Images</th>
+                        <th width = 100px>Action</th>
                     </thead>
                     <tbody>
                         <?php
-                            include "../connectSQL.php";
-                            $sql = "select * from products inner join categories on products.category_id = categories.id order by products.id desc ";
+                            
+                            $sql = "select * from product_images join products on product_images.product_id = products.id where product_images.product_id = $id";
                             $query = $conn->query($sql);
                             $i = 0;
                             while($row = $query->fetch_row()) {
                                 $i++;
                                 echo "
                                 <tr>
-                                    <td>".$i."</td>
-                                    <td>".$row[1]."</td>
-                                    <td>
-                                        <img width=90px src='../../img/".$row[5]."'>
-                                    </td>
-                                    <td>".$row[6]."</td>
-                                    <td>".$row[8]."</td>
-                                    <td>".$row[9]."</td>
-                                    <td>".$row[12]."</td>
-                                    <td> 
-                                        <button>
-                                            <a href='./EditProduct.php?id=".$row[0]."'>Sửa</a>
-                                        </button>
-                                        <button '>
-                                            <a href='./DeleteProduct.php?id=".$row[0] ."'onclick='return XacNhanXoa()'>Xóa</a>
-                                        </button>
-                                        <button>
-                                            <a href='../ProductImages/Details.php?id=".$row[0]."'>Images</a>
-                                        </button>
-                                    </td>
-                                </tr>";
+                                <td width = 100px>".$i."</td>
+                                <td><img width=90px src='../../img/".$row[1]."'></td>
+                                <td width = 100px> <button><a href='./DeleteImage.php?id=".$row[0]."'onclick='return XacNhanXoa()'>Xóa</a></button></td>
+                                </tr>
+                            ";
                             }
                         ?>
                     </tbody>

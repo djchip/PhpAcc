@@ -16,7 +16,7 @@
     <main>
         <?php include '../common/left.php'?>
         <div class="right">
-            <h1>Order Pages</h1>
+            <h1>List Categories</h1>
             <h2><a href="#">Dasboard</a>/List Categories</h2>
             <div class="bang">
                 <p><i class="fas fa-clipboard-list"></i> All Listings</p>

@@ -48,7 +48,6 @@ if (!function_exists('create_slug')) {
 
         if(isset($_GET['id'])){
             $id = $_GET['id'];
-        echo $id;
         $sql_up = "Select * from products where id = $id";
         $qr_up = mysqli_query($conn,$sql_up);
         //var_dump($qr_up);

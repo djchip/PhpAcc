@@ -16,35 +16,29 @@
     <main>
         <?php include '../common/left.php'?>
         <div class="right">
-            <h1>Order Pages</h1>
-            <h2><a href="#">Dasboard</a>/List Products Images </h2>
+            <h1>List Product Images</h1>
+            <h2><a href="#">Dasboard</a>/List Product Images</h2>
             <div class="bang">
                 <p><i class="fas fa-clipboard-list"></i> All Listings</p>
                 <table class="table table-bordered" >
                     <thead>
-                        <th>STT</th>
+                        <th width = 100px>STT</th>
                         <th>Product's Name</th>
-                        <th>Images</th>
-                        <th>Action</th>
+                        <th width = 100px>Action</th>
                     </thead>
                     <tbody>
                         <?php
                             include "../connectSQL.php";
-                            $sql = "select product_images.id, products.name, product_images.image_url from product_images inner join products on product_images.product_id = products.id group by products.name order by product_images.id desc ";
-                            $sql2 = "select product_images.id, products.name, product_images.image_url from product_images inner join products on product_images.product_id = products.id order by product_images.id desc ";
+                            $sql = "select * from products inner join product_images on products.id = product_images.product_id group by products.name order by products.id desc";
                             $query = $conn->query($sql);
-                            $query2 = $conn->query($sql2);
                             $i = 0;
                             while($row = $query->fetch_row()) {
                                 $i++;
                                 echo "
                                 <tr>
-                                <td>".$i."</td>
-                                <td>".$row[1]."</td> 
-                                <td> 
-                                    <img width=90px src='../../img/".$row[2]."'>
-                                </td> 
-                                <td> <button><a href='./EditProduct.php?id=".$row[0]."'>Sửa</a></button><button '><a href='./DeleteProduct.php?id=".$row[0] ."'onclick='return XacNhanXoa()'>Xóa</a></button></td>
+                                <td width = 100px>".$i."</td>
+                                <td>".$row[1]."</td>
+                                <td width = 100px> <button><a href='./Details.php?id=".$row[0]."'>Desstails</a></td>
                                 </tr>
                             ";
                             }
