@@ -3,11 +3,14 @@
     if(isset($_GET['id'])){
         $id = $_GET['id'];
     }
-    $sql_up = "select * from product_images join products on product_images.product_id = products.id where product_images.product_id = $id";
-    var_dump($id);
+    $sql_up = "select * from products";
     $query_up = $conn->query($sql_up);
     //var_dump($query);
     $row_up = mysqli_fetch_assoc($query_up);
+    $sql = "select * from products where id = $id";
+    $query = $conn->query($sql);
+    //var_dump($query);
+    $row = mysqli_fetch_assoc($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +48,7 @@
             <br>
             <div class="bang">
                 <table class="table table-bordered" >
-                <h3>Product Images: <?php echo $row_up['name'] ?></h3>
+                <h3>Product Images: <?php echo $row['name'] ?></h3>
                     <thead>
                         <th width = 100px>STT</th>
                         <th>Images</th>

@@ -56,13 +56,14 @@
                 <hr/>
                 <form method ="POST" id="formUpload" action="" enctype = "multipart/form-data">
                 <label for="danhmuc">Tên sản phẩm : </label><br>
-                    <select name = "productName">
+                <select name = "productName">
                         <?php
                             while($row_productName = $query_productName->fetch_assoc()){
                         ?>
                             <option value="<?php echo $row_productName['id'] ?>"><?php echo $row_productName['name'] ?></option>
                         <?php } ?>
-                    </select>
+                </select>
+
                 <br>
                 <div class="progress">
                     <div class="progress-bar"></div>

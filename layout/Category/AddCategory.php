@@ -43,6 +43,19 @@ if (!function_exists('create_slug')) {
     }
 }
 ?>
+<?php
+        include "../connectSQL.php";
+        
+        // thêm category
+        $categoryname = $_POST['categoryName'];
+        $slug = create_slug($categoryname);
+        if(isset($_POST['save'])){
+        $sql = "INSERT INTO categories (name,slug) VALUES ('$categoryname','$slug')";
+    
+        mysqli_query($conn, $sql);
+        header("location: ListCategory.php");
+        }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,20 +102,3 @@ if (!function_exists('create_slug')) {
 <script src="./../../script/Dasboard.js"></script>
 
 </html>
-
-<?php
-        include "../connectSQL.php";
-        
-        // thêm category
-        $categoryname = $_POST['categoryName'];
-        $slug = create_slug($categoryname);
-        if(isset($_POST['save'])){
-        $sql = "INSERT INTO categories (name,slug) VALUES ('$categoryname','$slug')";
-    
-        if($conn->query($sql)===TRUE){
-            echo "Them du lieu thanh cong";
-        }else{
-            echo "Loi {$sql}".$conn->error;
-        }
-        }
-?>

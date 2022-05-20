@@ -69,3 +69,14 @@
 <script src="./../../../bai9_jquery/bai9_jquery/js/jquery.min.js"></script>
 <script src="./../../script/Dasboard.js"></script>
 </html>
+
+
+
+
+<select name = "productName">
+                        <?php
+                            while($row_productName = $query_productName->fetch_assoc()){
+                        ?>
+                            <option value="<?php echo $row_productName['id'] ?>"><?php echo $row_productName['name'] ?></option>
+                        <?php } ?>
+                    </select>
